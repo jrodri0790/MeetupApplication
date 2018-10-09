@@ -13,6 +13,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        flavorDimensions "mode"
     }
     buildTypes {
         release {
@@ -28,6 +29,18 @@ android {
         abortOnError true
         // if true, only report errors
         ignoreWarnings true
+    }
+    productFlavors {
+        staging {
+            applicationIdSuffix ".statging"
+            versionNameSuffix "-staging"
+            dimension "mode"
+        }
+        production {
+            applicationIdSuffix ".production"
+            versionNameSuffix "-production"
+            dimension "mode"
+        }
     }
 }
 
