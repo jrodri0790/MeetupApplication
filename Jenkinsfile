@@ -18,14 +18,21 @@ pipeline {
                 sh 'fastlane functional'
             }
         }
-        stage('Building staging application') {
+        stage('Delivering application') {
             steps {
-                sh 'fastlane build_staging'
-            }
-        }
-        stage('Building prod application') {
-            steps {
-                sh 'fastlane build_prod'
+                script {
+                    if(DELIVER_TO == 'none') {
+                        echo 'Do not deliver anywhere'
+                    }
+                    if(DELIVER_TO == 'staging') {
+                        sh 'fastlane build_staging'
+                        sh 'fastlane deliver_staging'
+                    }
+                    if(DELIVER_TO == 'prod') {
+                        sh 'fastlane build_prod'
+                        sh 'fastlane deliver_prod'
+                    }
+                }
             }
         }
     }
