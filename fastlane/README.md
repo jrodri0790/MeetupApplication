@@ -41,6 +41,16 @@ Builds a new staging release
 fastlane android build_prod
 ```
 Builds a new prod release
+### android deliver_staging
+```
+fastlane android deliver_staging
+```
+Delivers a new staging release
+### android deliver_prod
+```
+fastlane android deliver_prod
+```
+Delivers a new prod release
 
 ----
 

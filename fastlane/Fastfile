@@ -40,4 +40,22 @@ platform :android do
   lane :build_prod do
     gradle(task: "clean assembleProduction")
   end
+
+  desc "Delivers a new staging release"
+  lane :deliver_staging do
+    hockey(
+      api_token: "9c253a98022a4dd899c3ccbe589b5dea",
+      apk: "./app/build/outputs/apk/staging/debug/app-staging-debug.apk",
+      notes: "New version of staging"
+    )
+  end
+
+  desc "Delivers a new prod release"
+  lane :deliver_prod do
+    hockey(
+      api_token: "c7ef8b8bdfed4dfabe16cca75573d392",
+      apk: "./app/build/outputs/apk/production/debug/app-production-debug.apk",
+      notes: "New version of prod"
+    )
+  end
 end
