@@ -31,6 +31,11 @@ Runs the lint tests
 fastlane android functional
 ```
 Runs the functional tests
+### android build_staging
+```
+fastlane android build_staging
+```
+Builds a new staging release
 ### android build_prod
 ```
 fastlane android build_prod

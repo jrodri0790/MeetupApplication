@@ -18,7 +18,12 @@ pipeline {
                 sh 'fastlane functional'
             }
         }
-        stage('Building application') {
+        stage('Building staging application') {
+            steps {
+                sh 'fastlane build_staging'
+            }
+        }
+        stage('Building prod application') {
             steps {
                 sh 'fastlane build_prod'
             }

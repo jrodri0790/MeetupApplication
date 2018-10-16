@@ -31,8 +31,13 @@ platform :android do
     gradle(task: "clean connectedAndroidTest")
   end
 
+  desc "Builds a new staging release"
+  lane :build_staging do
+    gradle(task: "clean assembleStaging")
+  end
+
   desc "Builds a new prod release"
   lane :build_prod do
-    gradle(task: "clean assembleRelease")
+    gradle(task: "clean assembleProduction")
   end
 end

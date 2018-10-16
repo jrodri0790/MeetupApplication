@@ -32,7 +32,7 @@ android {
     }
     productFlavors {
         staging {
-            applicationIdSuffix ".statging"
+            applicationIdSuffix ".staging"
             versionNameSuffix "-staging"
             dimension "mode"
         }
