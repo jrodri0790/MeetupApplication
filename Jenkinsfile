@@ -21,7 +21,7 @@ pipeline {
         stage('Delivering application') {
             steps {
                 script {
-                    if(DELIVER_TO == 'none') {
+                    if(DELIVER_TO == 'nowhere') {
                         echo 'Do not deliver anywhere'
                     }
                     if(DELIVER_TO == 'staging') {
