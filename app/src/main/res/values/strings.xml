@@ -1,6 +1,8 @@
 <resources>
+    <string name="package_name">uio.androidbootcamp.meetupapplication</string>
     <string name="app_name">MeetupApplication</string>
-    <string name="validar">Validar</string>
     <string name="password">Password</string>
     <string name="username">Username</string>
+    <string name="login">Login</string>
+    <string name="no_data">No data</string>
 </resources>
