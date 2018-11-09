@@ -19,7 +19,7 @@ class SharedPreferencesInteractorTest{
     private lateinit var value: String
     private lateinit var username: String
     private lateinit var password: String
-    private lateinit var emptyString: String
+    private lateinit var emptyArray: String
     private lateinit var interactor: SharedPreferencesInteractor
     private lateinit var mockSharedPreferences: SharedPreferences
     private lateinit var mockEditor: SharedPreferences.Editor
@@ -43,7 +43,7 @@ class SharedPreferencesInteractorTest{
         value = "value1"
         username = "username"
         password = "password"
-        emptyString = ""
+        emptyArray = "[]"
         mockGson = mock(Gson::class.java)
         interactor = SharedPreferencesInteractor(context, mockGson)
         interactor.presenter = mockPresenter
@@ -54,7 +54,7 @@ class SharedPreferencesInteractorTest{
     fun shouldNotifyUserAlreadyExistsIfUserAlreadyExistsInSharedPreferences(){
         val user = User(username, password)
         val jsonifiedUsers = "[{username:$username, password:$password}]"
-        `when`(mockSharedPreferences.getString(key, emptyString)).thenReturn(jsonifiedUsers)
+        `when`(mockSharedPreferences.getString(key, emptyArray)).thenReturn(jsonifiedUsers)
         val expectedUsers = listOf(User(username, password))
         val listType = object : TypeToken<List<User>>() {}.type
         `when`(mockGson.fromJson<List<User>>(jsonifiedUsers, listType)).thenReturn(expectedUsers)
@@ -70,7 +70,7 @@ class SharedPreferencesInteractorTest{
         val newPassword = "Password2"
         val userToAdd = User(newUsername, newPassword)
         val jsonifiedUsers = "[{username:$username, password:$password}]"
-        `when`(mockSharedPreferences.getString(key, emptyString)).thenReturn(jsonifiedUsers)
+        `when`(mockSharedPreferences.getString(key, emptyArray)).thenReturn(jsonifiedUsers)
         val expectedUsers = listOf(User(username, password))
         val listType = object : TypeToken<List<User>>() {}.type
         `when`(mockGson.fromJson<List<User>>(jsonifiedUsers, listType)).thenReturn(expectedUsers)
@@ -89,7 +89,7 @@ class SharedPreferencesInteractorTest{
     @Test
     fun shouldCallMethodToShowUsersWhenUsersAreRetrievedFromSharedPreferences(){
         val jsonifiedUsers = "[{username:$username, password:$password}]"
-        `when`(mockSharedPreferences.getString(key, emptyString)).thenReturn(jsonifiedUsers)
+        `when`(mockSharedPreferences.getString(key, emptyArray)).thenReturn(jsonifiedUsers)
         val expectedUsers = listOf(User(username, password))
         val listType = object : TypeToken<List<User>>() {}.type
         `when`(mockGson.fromJson<List<User>>(jsonifiedUsers, listType)).thenReturn(expectedUsers)

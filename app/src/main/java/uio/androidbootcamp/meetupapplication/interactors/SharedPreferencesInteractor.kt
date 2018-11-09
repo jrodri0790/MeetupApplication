@@ -25,7 +25,7 @@ class SharedPreferencesInteractor(private val context: Context, private val gson
         val sharedPref = context.getSharedPreferences(
                 context.getString(R.string.package_name),
                 Context.MODE_PRIVATE)
-        return sharedPref.getString(key, "")
+        return sharedPref.getString(key, "[]")
     }
 
     private fun saveUsersInSharedPreferences(key: String, users: List<User>) {
@@ -35,10 +35,7 @@ class SharedPreferencesInteractor(private val context: Context, private val gson
 
     private fun obtainUsersFromSharedPreferences(key: String): List<User> {
         val listType = object : TypeToken<List<User>>() {}.type
-        var gsonValue = getStringFromSharedPreferences(key)
-        if(gsonValue == ""){
-            gsonValue = "[]"
-        }
+        val gsonValue = getStringFromSharedPreferences(key)
         return gson.fromJson(gsonValue, listType)
 
     }
