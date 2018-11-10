@@ -16,34 +16,34 @@ update_fastlane
 default_platform(:android)
 
 platform :android do
-  desc "Runs the clean gradle"
-  lane :unit do
-    gradle(task: "clean test")
+  desc "Clean the project"
+  lane :clean do
+    gradle(task: "clean")
   end
 
   desc "Runs the unit tests"
   lane :unit do
-    gradle(task: "clean test")
+    gradle(task: "test")
   end
 
   desc "Runs the lint tests"
   lane :lint do
-    gradle(task: "clean lint")
+    gradle(task: "lint")
   end
 
   desc "Runs the functional tests"
   lane :functional do
-    gradle(task: "clean connectedAndroidTest")
+    gradle(task: "connectedAndroidTest")
   end
 
   desc "Builds a new staging release"
   lane :build_staging do
-    gradle(task: "clean assembleStaging")
+    gradle(task: "assembleStaging")
   end
 
   desc "Builds a new prod release"
   lane :build_prod do
-    gradle(task: "clean assembleProduction")
+    gradle(task: "assembleProduction")
   end
 
   desc "Delivers a new staging release"

@@ -16,6 +16,11 @@ or alternatively using `brew cask install fastlane`
 
 # Available Actions
 ## Android
+### android clean
+```
+fastlane android clean
+```
+Clean the project
 ### android unit
 ```
 fastlane android unit
