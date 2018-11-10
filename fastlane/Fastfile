@@ -16,6 +16,11 @@ update_fastlane
 default_platform(:android)
 
 platform :android do
+  desc "Runs the clean gradle"
+  lane :unit do
+    gradle(task: "clean test")
+  end
+
   desc "Runs the unit tests"
   lane :unit do
     gradle(task: "clean test")
